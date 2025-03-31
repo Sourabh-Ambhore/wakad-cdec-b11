@@ -1,0 +1,6 @@
+first_cidr        = "10.0.0.0/16"
+first_vpc         = "my_first_vpc"
+first_cidr_subnet = "10.0.1.0/24"
+first_az          = "us-east-1a"
+first_subnet_name = "my-first-public-subnet"
+first_igw_name    = "first_igw"

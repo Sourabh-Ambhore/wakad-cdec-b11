@@ -1,0 +1,6 @@
+first_cidr        = "10.10.0.0/16"
+first_vpc         = "dev_vpc"
+first_cidr_subnet = "10.10.1.0/24"
+first_az          = "us-east-1a"
+first_subnet_name = "dev-public-subnet"
+first_igw_name    = "dev_igw"
