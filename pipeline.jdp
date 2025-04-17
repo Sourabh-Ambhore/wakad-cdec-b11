@@ -24,8 +24,7 @@ pipeline {
         stage('Test stage') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonar-cred') {
-                  /opt/maven/bin/mvn sonar:sonar
-                     
+                 sh '/opt/maven/bin/mvn sonar:sonar'                     
 //                 sh '''mvn sonar:sonar \\
 //   -Dsonar.projectKey=onlinebookstore \\
 //   -Dsonar.host.url=http://172.31.11.136:9000 \\
