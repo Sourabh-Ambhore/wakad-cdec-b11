@@ -23,7 +23,7 @@ pipeline {
         // }
         stage('Test stage') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar-cred') {
+                withSonarQubeEnv( credentialsId: 'sonar-cred') {
                  sh '/opt/maven/bin/mvn sonar:sonar'                     
 //                 sh '''mvn sonar:sonar \\
 //   -Dsonar.projectKey=onlinebookstore \\
@@ -31,6 +31,7 @@ pipeline {
 //   -Dsonar.login=ad2e91d60b5cbee15da086e89b2ed1d51151a349'''
                 echo 'code quality checking done'
             }
+        }
         }
         stage('Deploy Stage') {
             steps {
