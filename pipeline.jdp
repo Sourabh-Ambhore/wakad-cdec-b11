@@ -16,6 +16,9 @@ pipeline {
                 echo 'Build Stage succeed'
             }
         }
+
+
+        
         // stage('Test stage') {
         //     steps {
         //         echo 'Testing done'
@@ -30,9 +33,14 @@ pipeline {
 //   -Dsonar.host.url=http://172.31.11.136:9000 \\
 //   -Dsonar.login=ad2e91d60b5cbee15da086e89b2ed1d51151a349'''
                 echo 'code quality checking done'
-            }
+                 }
+                  timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+
         }
         }
+        
         stage('Deploy Stage') {
             steps {
                 echo 'Deployment Done '
