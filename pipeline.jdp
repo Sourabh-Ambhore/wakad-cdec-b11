@@ -15,23 +15,11 @@ pipeline {
                 sh '/opt/maven/bin/mvn clean package '
                 echo 'Build Stage succeed'
             }
-        }
-
-
-        
-        // stage('Test stage') {
-        //     steps {
-        //         echo 'Testing done'
-        //     }
-        // }
-        stage('Test stage') {
+        }      
+       stage('Test stage') {
             steps {
                 withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-cred') {
                  sh '/opt/maven/bin/mvn sonar:sonar'                     
-//                 sh '''mvn sonar:sonar \\
-//   -Dsonar.projectKey=onlinebookstore \\
-//   -Dsonar.host.url=http://172.31.11.136:9000 \\
-//   -Dsonar.login=ad2e91d60b5cbee15da086e89b2ed1d51151a349'''
                 echo 'code quality checking done'
                  }
                   timeout(time: 10, unit: 'MINUTES') {
@@ -43,6 +31,7 @@ pipeline {
         
         stage('Deploy Stage') {
             steps {
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-cred', path: '', url: 'http://172.31.17.134:8080')], contextPath: '/', war: 'target/*.war' 
                 echo 'Deployment Done '
             }
         }
